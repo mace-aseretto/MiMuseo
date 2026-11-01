@@ -1,0 +1,257 @@
+:root {
+  --paper: #f6f5f1;
+  --ink: #171817;
+  --muted: #777873;
+  --line: #d9d9d2;
+  --accent: #c9ff55;
+  --max: 1440px;
+}
+
+/* estilos generales */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* header */
+
+header {
+    max-width: var(--max);
+    margin: auto;
+    padding: 30px 32px 70px;
+    border-bottom: 1px solid var(--line);
+}
+
+nav {
+    display: flex;
+    justify-content: flex-end;
+    gap: 28px;
+
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+}
+
+nav a {
+    position: relative;
+    padding: 10px 0;
+}
+
+nav a:hover::after {
+    content: "";
+    position: absolute;
+    bottom: 2px;
+    left: 0;
+
+    width: 100%;
+    height: 1px;
+    background: var(--ink);
+}
+
+
+header h1 {
+    font-size: clamp(54px, 9.3vw, 136px);
+    line-height: 0.88;
+    letter-spacing: -0.095em;
+    font-weight: 500;
+
+    margin: 100px 0 60px;
+}
+
+#buscador {
+    width: 100%;
+    max-width: 500px;
+
+    padding: 15px 0;
+
+    border: none;
+    border-bottom: 1px solid var(--line);
+    border-radius: 0;
+
+    background: transparent;
+    color: var(--ink);
+
+    font-family: inherit;
+    font-size: 16px;
+
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+#buscador::placeholder {
+    color: var(--muted);
+}
+
+#buscador:focus {
+    border-color: var(--ink);
+}
+
+/* obras */
+
+#contenedor-obras {
+    max-width: var(--max);
+    margin: auto;
+
+    padding: 70px 32px 100px;
+
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 54px 20px;
+
+    min-height: 50vh;
+}
+
+/* tarjetas */
+
+.project-card {
+    min-width: 0;
+}
+
+.project-art {
+    width: 100%;
+    aspect-ratio: 1.1;
+
+    overflow: hidden;
+    background: #e3e2dc;
+}
+
+.project-art img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    display: block;
+
+    transition: transform 0.65s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.project-card:hover .project-art img {
+    transform: scale(1.025);
+}
+
+/* info de cada obra */
+
+.project-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    gap: 18px;
+    padding-top: 15px;
+}
+
+.project-meta h3 {
+    font-size: clamp(20px, 2.3vw, 30px);
+    letter-spacing: -0.055em;
+    font-weight: 500;
+
+    margin: 0 0 7px;
+}
+
+.project-meta p {
+    margin: 0;
+
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+/* footer */
+
+footer {
+    max-width: var(--max);
+    margin: auto;
+
+    border-top: 1px solid var(--line);
+    padding: 25px 32px 34px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+
+    font-size: 11px;
+    color: var(--muted);
+}
+
+footer h1 {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+
+    color: var(--ink);
+    margin: 0;
+}
+
+footer a {
+    color: var(--ink);
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+footer p {
+    margin: 0;
+}
+
+
+/* media queries */
+
+@media (max-width: 700px) {
+
+    header {
+        padding: 20px 18px 50px;
+    }
+
+    nav {
+        gap: 15px;
+        font-size: 10px;
+    }
+
+    header h1 {
+        font-size: clamp(56px, 15vw, 100px);
+        margin: 88px 0 50px;
+    }
+
+    #contenedor-obras {
+        grid-template-columns: 1fr;
+        gap: 38px;
+
+        padding: 50px 18px 75px;
+    }
+
+    .project-art {
+        aspect-ratio: 1.2;
+    }
+
+    .project-meta h3 {
+        font-size: 25px;
+    }
+
+    footer {
+        padding: 25px 18px 34px;
+
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+}
