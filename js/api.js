@@ -1,4 +1,7 @@
 
+ 
+ 
+ 
  export async function pedirObras() {
     const respuesta = await fetch("https://openaccess-api.clevelandart.org/api/artworks/?q=sea&limit=5");
     const obras = await respuesta.json();

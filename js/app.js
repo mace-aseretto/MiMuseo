@@ -1,4 +1,4 @@
-import { pedirObras } from "./api.js";
+const contenedorObras = document.getElementById("contenedor-obras");
 
-const resultado = await pedirObras();
-console.log(resultado.data);
+const tarjeta = document.createElement("article");
+contenedorObras.appendChild(tarjeta);
