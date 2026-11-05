@@ -45,7 +45,7 @@
     transform: scale(1.04);
 }
 
-/* INFORMACIÓN DE LA OBRA */
+/* Informacion de obras */
 
 .project-meta {
     display: flex;
@@ -56,13 +56,7 @@
     padding-top: 18px;
 }
 
-.project-meta h2 {
-    font-size: clamp(20px, 2vw, 28px);
-    font-weight: 500;
-    letter-spacing: -0.05em;
-    line-height: 1.15;
-    margin: 0 0 10px;
-}
+
 
 .project-meta p {
     font-size: 12px;
@@ -110,18 +104,11 @@
 
 /* media queries */
 
-@media (max-width: 1000px) {
-
-    #contenedor-obras {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-}
 
 @media (max-width: 700px) {
 
-    #contenedor-obras 
-      #contenedor-favoritos {
+    #contenedor-obras,
+    #contenedor-favoritos {
         grid-template-columns: 1fr;
         gap: 45px;
     }

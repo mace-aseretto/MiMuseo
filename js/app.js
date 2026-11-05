@@ -14,7 +14,7 @@ const obras = resultado.data.map(obra => {
     );
 });
 
-console.log(obras)
+
 
 
 const contenedorObras = document.getElementById("contenedor-obras");
@@ -57,7 +57,6 @@ contenedorImagen.classList.add("project-art");
 
 const imagen = document.createElement("img");
 imagen.src = obra.image;
-tarjeta.classList.add("project-card");
 tarjeta.appendChild(contenedorImagen);
 
 
@@ -116,14 +115,14 @@ if (paginaActual > totalPaginas) {
 
 mostrarPagina();
 
-document.getElementById("anterior").addEventListener("click", () => {
+botonAnterior.addEventListener("click", () => {
     if (paginaActual > 1) {
         paginaActual--;
         mostrarPagina();
     }
 });
 
-document.getElementById("siguiente").addEventListener("click", () => {
+botonSiguiente.addEventListener("click", () => {
     paginaActual++;
     mostrarPagina();
 });
