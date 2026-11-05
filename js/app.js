@@ -19,21 +19,21 @@ console.log(obras)
 
 const contenedorObras = document.getElementById("contenedor-obras");
 
-
+let paginaActual = 1;
+const obrasPorPagina = 12;
 const buscador = document.getElementById("buscador");
-buscador.addEventListener("input", () => {
-    const textoBusqueda = buscador.value.toLowerCase().trim();
-     obras.forEach (obra => {
-        const artista = (obra.artist || "").toLowerCase();
-        const coincide = obra.title.toLowerCase().includes(textoBusqueda) || artista.includes(textoBusqueda);
-const tarjeta = document.querySelector(`[data-id="${obra.id}"]`);
+const botonAnterior = document.getElementById("anterior");
+const botonSiguiente = document.getElementById("siguiente");
+const numeroPagina = document.getElementById("numero-pagina");
 
-        if (tarjeta) {
-            tarjeta.style.display = coincide ? "" : "none";
-        }
-    });
+buscador.addEventListener("input", () => {
+    paginaActual = 1;
+    mostrarPagina();
 });
-obras.forEach(obra => {
+function mostrarObras(lista) {
+    contenedorObras.replaceChildren();
+
+    lista.forEach(obra => {
    localStorage.setItem(`obra-${obra.id}`, JSON.stringify(obra));
     if (!obra.image) return;
 
@@ -89,4 +89,41 @@ localStorage.setItem("favoritos", JSON.stringify(favoritos));
          localStorage.setItem("favoritos", JSON.stringify(favoritos));
     }
 });
+});
+}
+function mostrarPagina() {
+    const textoBusqueda = buscador.value.toLowerCase().trim();
+
+    const obrasFiltradas = obras.filter(obra => {
+        const artista = (obra.artist || "").toLowerCase();
+
+        return obra.title.toLowerCase().includes(textoBusqueda) ||
+               artista.includes(textoBusqueda);
+    });
+
+    const totalPaginas = Math.max(1, Math.ceil(obrasFiltradas.length / obrasPorPagina));
+
+if (paginaActual > totalPaginas) {
+    paginaActual = totalPaginas;
+}
+
+    const inicio = (paginaActual - 1) * obrasPorPagina;
+    const fin = inicio + obrasPorPagina;
+
+    mostrarObras(obrasFiltradas.slice(inicio, fin));
+    numeroPagina.textContent = `Página ${paginaActual} de ${totalPaginas}`;
+}
+
+mostrarPagina();
+
+document.getElementById("anterior").addEventListener("click", () => {
+    if (paginaActual > 1) {
+        paginaActual--;
+        mostrarPagina();
+    }
+});
+
+document.getElementById("siguiente").addEventListener("click", () => {
+    paginaActual++;
+    mostrarPagina();
 });

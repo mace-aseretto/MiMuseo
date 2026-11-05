@@ -106,7 +106,39 @@ header h1 {
 
 
 
+/* paginacion */
 
+.paginacion {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin: 50px 0;
+}
+
+.paginacion button {
+    background: transparent;
+    border: 1px solid #222;
+    padding: 12px 24px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.paginacion button:hover {
+    background: #222;
+    color: white;
+}
+
+#numero-pagina {
+    font-size: 14px;
+    color: #555;
+}
+
+.paginacion button:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
 
 
 /* footer */
