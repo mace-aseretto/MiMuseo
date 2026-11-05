@@ -26,15 +26,16 @@ obras.forEach(obra => {
     tarjeta.classList.add("project-card");
 contenedorObras.appendChild(tarjeta);
 
+const encabezadoTarjeta = document.createElement("div");
+encabezadoTarjeta.classList.add("encabezado-tarjeta");
+tarjeta.appendChild(encabezadoTarjeta);
 
 const titulo = document.createElement("h2");
 titulo.textContent = obra.title;
-tarjeta.appendChild(titulo);
+encabezadoTarjeta.appendChild(titulo);
 
-tarjeta.classList.add("project-card");
 const contenedorImagen = document.createElement("div");
 contenedorImagen.classList.add("project-art");
-tarjeta.appendChild(contenedorImagen);
 
 
 
@@ -60,7 +61,7 @@ if (favoritos.includes(obra.id)) {
     botonFavorito.textContent = "♥";
 }
 botonFavorito.classList.add("favorito");
-contenedorImagen.appendChild(botonFavorito);
+encabezadoTarjeta.appendChild(botonFavorito);
 botonFavorito.addEventListener("click", () => {
     if (botonFavorito.textContent === "♡") {
         botonFavorito.textContent = "♥";

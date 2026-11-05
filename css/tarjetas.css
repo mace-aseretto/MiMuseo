@@ -1,4 +1,5 @@
- #contenedor-obras {
+ #contenedor-obras,
+ #contenedor-favoritos {
     max-width: var(--max);
     margin: 0 auto;
     padding: 50px 32px 100px;
@@ -13,23 +14,30 @@
     min-width: 0;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    background-color: #EDEAE3;
+    gap: 8px;
+
 }
 
 .project-art {
-    position: relative;
     width: 100%;
-    height: 600px;
+    height: 450px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     overflow: hidden;
-    /* background: var(--paper); */
+    background: transparent;
 }
 
 .project-art img {
-    width: 100%;
-    height: 100%;
+    width: auto;
+    height: auto;
+
+    max-width: 100%;
+    max-height: 100%;
+
     object-fit: contain;
-      object-position: center;
     display: block;
 }
 
@@ -78,26 +86,26 @@
 /* BOTÓN DE FAVORITOS */
 
 .favorito {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-
+    position: static;
+    flex-shrink: 0;
       background: #FAF9F6;
     border: 1px solid #d9d9d2;
     border-radius: 50%;
 
-
-    width: 36px;
-    height: 36px;
-    padding: 0;
-
-    cursor: pointer;
-    
 }
 
 .favorito:hover {
     background: var(--accent, #e5ff55);
     border-color: var(--accent, #e5ff55);
+}
+
+
+
+.encabezado-tarjeta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
 }
 
 /* media queries */
@@ -112,7 +120,8 @@
 
 @media (max-width: 700px) {
 
-    #contenedor-obras {
+    #contenedor-obras 
+      #contenedor-favoritos {
         grid-template-columns: 1fr;
         gap: 45px;
     }

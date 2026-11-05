@@ -13,9 +13,13 @@ tarjeta.classList.add("project-card");
 contenedorFavoritos.appendChild(tarjeta);
 
 
+const encabezadoTarjeta = document.createElement("div");
+encabezadoTarjeta.classList.add("encabezado-tarjeta");
+tarjeta.appendChild(encabezadoTarjeta);
+
 const titulo = document.createElement("h2");
 titulo.textContent = obra.title;
-tarjeta.appendChild(titulo);
+encabezadoTarjeta.appendChild(titulo);
 
 const contenedorImagen = document.createElement("div");
 contenedorImagen.classList.add("project-art");
@@ -37,7 +41,7 @@ tarjeta.appendChild(fecha);
 const botonFavorito = document.createElement("button");
 botonFavorito.textContent = "♥";
 botonFavorito.classList.add("favorito");
-contenedorImagen.appendChild(botonFavorito);
+encabezadoTarjeta.appendChild(botonFavorito);
 botonFavorito.addEventListener("click", () => {
 favoritos = favoritos.filter(id => id !== obra.id);
     localStorage.setItem("favoritos", JSON.stringify(favoritos));
