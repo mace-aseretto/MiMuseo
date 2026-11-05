@@ -1,4 +1,4 @@
-# Mi Museo 🎨
+# Mi Museo 
 
 Mi Museo es una página web que permite explorar una colección de obras de arte y guardar las favoritas.
 
