@@ -18,12 +18,28 @@ console.log(obras)
 
 
 const contenedorObras = document.getElementById("contenedor-obras");
+
+
+const buscador = document.getElementById("buscador");
+buscador.addEventListener("input", () => {
+    const textoBusqueda = buscador.value.toLowerCase().trim();
+     obras.forEach (obra => {
+        const artista = (obra.artist || "").toLowerCase();
+        const coincide = obra.title.toLowerCase().includes(textoBusqueda) || artista.includes(textoBusqueda);
+const tarjeta = document.querySelector(`[data-id="${obra.id}"]`);
+
+        if (tarjeta) {
+            tarjeta.style.display = coincide ? "" : "none";
+        }
+    });
+});
 obras.forEach(obra => {
    localStorage.setItem(`obra-${obra.id}`, JSON.stringify(obra));
     if (!obra.image) return;
 
     const tarjeta = document.createElement("article");
     tarjeta.classList.add("project-card");
+    tarjeta.dataset.id = obra.id;
 contenedorObras.appendChild(tarjeta);
 
 const encabezadoTarjeta = document.createElement("div");
